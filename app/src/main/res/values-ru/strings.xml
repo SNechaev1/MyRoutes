@@ -26,4 +26,7 @@
     <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
     <string name="positive_btn_GPS_permission">Permit</string>
 
+    <string name="routes">Маршруты</string>
+    <string name="statistics">Статистика</string>
+
 </resources>

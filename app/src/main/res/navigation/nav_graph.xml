@@ -17,11 +17,11 @@
         app:popUpTo="@+id/nav_map"
         app:popUpToInclusive="true" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_profile"-->
-<!--        android:name="BaseProfileFragment"-->
-<!--        android:label="@string/title_profile"-->
-<!--        tools:layout="@layout/base_profile_fr" />-->
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.snechaev1.myroutes.ui.profile.BaseProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/base_profile_fr" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/nav_detail"-->
@@ -30,18 +30,12 @@
 <!--    </fragment>-->
 <!--    <action android:id="@+id/action_global_detail_fragment" app:destination="@id/nav_detail"/>-->
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_add"-->
-<!--        android:name="AddFragment"-->
-<!--        android:label="@string/title_add"-->
-<!--        tools:layout="@layout/add_fr" >-->
-<!--    </fragment>-->
-<!--    <action android:id="@+id/action_global_add_fragment" app:destination="@id/nav_add"/>-->
-
     <dialog
         android:id="@+id/bottomSheetFragment"
         android:name="com.snechaev1.myroutes.ui.map.MapBottomSheet"
-        android:label="BottomSheetFragment" />
+        android:label="BottomSheetFragment"
+        tools:layout="@layout/map_bottom_sheet" />
+
 
 
 </navigation>

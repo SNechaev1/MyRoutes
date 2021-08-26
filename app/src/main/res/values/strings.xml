@@ -25,4 +25,9 @@
     <string name="positive_btn_notGPS">Go to settings</string>
     <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
     <string name="positive_btn_GPS_permission">Permit</string>
+
+    <string name="routes">Routes</string>
+    <string name="statistics">Statistics</string>
+
+
 </resources>
