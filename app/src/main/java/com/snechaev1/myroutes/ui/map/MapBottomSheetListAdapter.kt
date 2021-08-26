@@ -13,7 +13,7 @@ import com.snechaev1.myroutes.databinding.RouteItemBinding
 
 class MapBottomSheetListAdapter(
     private val fragment: BottomSheetDialogFragment
-) : ListAdapter<Route, MapBottomSheetListAdapter.ViewHolder>(RepairRequestDiffCallback()) {
+) : ListAdapter<Route, MapBottomSheetListAdapter.ViewHolder>(RouteDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(RouteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -38,9 +38,9 @@ class MapBottomSheetListAdapter(
         val stateView: TextView = binding.itemState
     }
 
-    private class RepairRequestDiffCallback : DiffUtil.ItemCallback<Route>() {
+    private class RouteDiffCallback : DiffUtil.ItemCallback<Route>() {
         override fun areItemsTheSame(oldItem: Route, newItem: Route): Boolean {
-            return oldItem._id == newItem._id
+            return oldItem.created == newItem.created
         }
 
         @SuppressLint("DiffUtilEquals")

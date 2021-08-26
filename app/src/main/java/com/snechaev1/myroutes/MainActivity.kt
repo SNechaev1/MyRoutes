@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -17,7 +16,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.snechaev1.myroutes.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -55,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 //                    navCtrl.popBackStack(R.id.nav_map, true)
                 }
                 R.id.nav_profile -> {
-                    Timber.d("destination.id: R.id.nav_profile, R.id.nav_requests")
+                    Timber.d("destination.id: R.id.nav_profile")
                     binding.bottomNavView.visibility = View.VISIBLE
                 }
                 else -> {
@@ -93,12 +91,9 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
-
     fun settings(item: MenuItem) {
-        lifecycleScope.launch {
-//            val navController = findNavController(R.id.nav_host_fragment)
-//            navController.navigate(R.id.action_global_settings)
-        }
+        val navController = findNavController(R.id.nav_host_fragment)
+        navController.navigate(R.id.nav_settings)
     }
 
 //    fun showProgress(show: Boolean) {

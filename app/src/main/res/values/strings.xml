@@ -30,4 +30,28 @@
     <string name="statistics">Statistics</string>
 
 
+    <!-- app errors -->
+    <string name="invalid_params">Input values invalid</string>  //400
+    <string name="incorrect_email_or_password">incorrect phone or password</string>  //
+    <string name="user_already_exist">User already exists</string>  //409
+    <string name="user_does_not_exist">User doesn\'t exist, please register</string>  //204
+    <string name="wrong_code">Wrong Sms code</string>  //
+    <string name="user_can_be_resurrected">User can be restored</string> //
+    <string name="access_denied">Access denied</string>  //
+    <string name="unauthorized">Unauthorized</string>  //
+    <string name="err_register">Registration error</string>  //500
+    <string name="err_login">Login error, please try later</string>  //500
+    <string name="err_delete_account">Account deletion error</string>  //500
+    <string name="err_logout">Logout error</string>  //400, 500
+    <string name="err_restore_account">Could not restore user</string>  //400, 500
+    <string name="could_not_define_location">Could not define location</string>
+    <string name="outside_the_permitted_locations">Outside the permitted locations</string>
+    <string name="certificate_problem">Problems with the SSL certificate</string>
+    <string name="connection_problems">Connection problems</string>
+    <string name="no_content">No content</string>
+    <string name="default_problems">Something went wrong</string>
+    <string name="auth_problems">An error occurred. You must log in to the app.</string>
+    <string name="need_update">You need to update the app.</string>
+    <string name="add_choose_where">Upload from your library or take a new photo</string>
+
 </resources>

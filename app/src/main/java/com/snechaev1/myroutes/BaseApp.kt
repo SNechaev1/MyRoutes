@@ -3,16 +3,12 @@ package com.snechaev1.myroutes
 import android.app.Application
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
-import androidx.annotation.RequiresApi
-import com.google.android.gms.common.api.ApiException
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import timber.log.Timber
-import java.util.*
 
 @HiltAndroidApp
 class BaseApp : Application() {

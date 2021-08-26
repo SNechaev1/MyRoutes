@@ -4,13 +4,16 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.snechaev1.myroutes.R
 import com.snechaev1.myroutes.data.Route
 import com.snechaev1.myroutes.databinding.RouteItemBinding
 
-class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>(RepairRequestDiffCallback()) {
+class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>(RouteDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(RouteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -23,8 +26,8 @@ class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>
 //            holder.dateView.text = item.createdDate()
 //            holder.stateView.text = item.statusString(holder.itemView.context)
             holder.itemView.setOnClickListener {
-//                val bundle = bundleOf("route" to item)
-//                it.findNavController().navigate(R.id.action_global_detail_fragment, bundle)
+                val bundle = bundleOf("route" to item)
+                it.findNavController().navigate(R.id.action_global_detail_fragment, bundle)
             }
         }
     }
@@ -35,9 +38,9 @@ class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>
         val stateView: TextView = binding.itemState
     }
 
-    private class RepairRequestDiffCallback : DiffUtil.ItemCallback<Route>() {
+    private class RouteDiffCallback : DiffUtil.ItemCallback<Route>() {
         override fun areItemsTheSame(oldItem: Route, newItem: Route): Boolean {
-            return oldItem._id == newItem._id
+            return oldItem.created == newItem.created
         }
 
         @SuppressLint("DiffUtilEquals")
