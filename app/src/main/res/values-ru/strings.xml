@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Routes</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- navigation -->
+    <string name="title_map">Карта</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_add">Добавить</string>
+    <string name="title_detail">Детали</string>
+    <string name="title_settings">Настройки</string>
+
+    <!-->Dialog<-->
+    <string name="dialog_title_error">Внимание</string>
+    <string name="continue_btn">Далее</string>
+    <string name="settings_push">Уведомления</string>
+    <string name="enter_date">Выбранная дата</string>
+    <string name="cancel">Отменить</string>
+    <string name="close">Закрыть</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет\t</string>
+    <string name="ok">OK\t</string>
+
+    <string name="dialog_title">Внимание</string>
+    <string name="main_text_notGPS">To use the app, you need to enable location detection.</string>
+    <string name="positive_btn_notGPS">Go to settings</string>
+    <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
+    <string name="positive_btn_GPS_permission">Permit</string>
+
+</resources>

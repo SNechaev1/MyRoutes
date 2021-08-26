@@ -1,10 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+<!--    <color name="purple_200">#FFBB86FC</color>-->
+<!--    <color name="purple_500">#FF6200EE</color>-->
+<!--    <color name="purple_700">#FF3700B3</color>-->
+<!--    <color name="teal_200">#FF03DAC5</color>-->
+<!--    <color name="teal_700">#FF018786</color>-->
+
+    <!--    brand primary background-->
+    <color name="brand_prim_bg">#FFFFFF</color>
+    <color name="brand_prim_bg_transparent_10">#1AFFFFFF</color>
+    <color name="brand_prim_bg_transparent_50">#80FFFFFF</color>
+
+    <!--    brand primary text-->
+    <color name="brand_prim_text">#3C3C3C</color>
+
+    <!--    brand primary color-->
+    <color name="brand_prim_transparent">#CC0CB02B</color>
+    <color name="brand_prim_transparent_50">#800CB02B</color>
+    <color name="brand_prim_transparent_10">#1A0CB02B</color>
+    <color name="brand_prim_transparent_5">#0d0CB02B</color>
+    <color name="brand_prim">#0CB02B</color>
+    <color name="status_bar_bg">@color/brand_prim</color>
+
+    <color name="on_brand_prim">#FFFFFF</color>
+    <color name="brand_prim_dark">#1b4332</color>
+
+    <!--    brand secondary color-->
+    <color name="brand_sec">#23A5BD</color>
+    <color name="on_brand_sec">#FFFFFF</color>
+
+    <!--    theme colors-->
+    <color name="colorPrimary">@color/black</color>
+    <color name="colorPrimaryDark">@color/brand_prim_bg</color>
+    <color name="colorSecondary">#3C3C3C</color>
+
+    <!--    monochrome colors-->
+    <color name="transparent">#00000000</color>
+    <color name="white_transparent">#CCFFFFFF</color>
+    <color name="white_transparent_50">#80ffffff</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="grey_light_transparent">#86292b32</color>
+    <color name="grey_transparent_50">#8030333a</color>
+    <color name="grey_lighter">#808285</color>
+    <color name="grey_light">#5b5d5f</color>
+    <color name="gray_dark">#373a41</color>
+    <color name="black">#000000</color>
+
+    <color name="red">#FF422C</color>
+    <color name="violet">#6a197d</color>
+
+    <!--    custom elements colors-->
+    <color name="enter_code">@color/brand_prim</color>
+    <color name="btn_map_item_active">@color/brand_prim</color>
+    <color name="btn_map_item_disabled">#B3767680</color>
+    <color name="bottom_sheet_second_title">#80FFFFFF</color>
+
+    <color name="menu_item_disabled_color">#73767d</color>
+    <!--    <color name="btn_disabled_color">#C9C8CD</color>-->
+    <color name="btn_disabled_color">#4b4c4f</color>
+
+    <color name="divider_grey">#4b4c4f</color>
+    <color name="dialog_bg">#FFFFFF</color>
+    <color name="profile_item_title">#B3ffffff</color>
+    <color name="unselected_indicator">#56595f</color>
+    <color name="divider_drawer">#DDDDDD</color>
+
+    <color name="top_message_color">@color/black</color>
+    <color name="message_grey">#3c3f47</color>
+    <color name="message_other_bg">#EEEEEE</color>
+    <color name="message_my_text_color">#babbbd</color>
+    <color name="message_other_text_color">@color/brand_prim_text</color>
+    <color name="message_date_text_color">@color/menu_item_disabled_color</color>
+    <color name="message_date_header_text_color">@color/white</color>
+    <color name="tab_text_color">#3C3C3C</color>
+    <color name="pager_bg_color">@color/brand_sec</color>
+
+    <!--Color palette-->
+    <color name="reply_white_50">#ffffff</color>
+
+    <color name="reply_black_800">#121212</color>
+    <color name="reply_black_900">#000000</color>
+
+    <color name="reply_white_50_alpha_060">#99ffffff</color>
+    <color name="reply_blue_50_alpha_060">#99eef0f2</color>
+
+    <color name="reply_black_900_alpha_020">#33000000</color>
+    <color name="reply_black_900_alpha_087">#de000000</color>
+    <color name="reply_black_900_alpha_060">#99000000</color>
+
+
+    // camera
+    <color name="icActive">#FFFFFFFF</color>
+    <color name="icFocused">#DDFFFFFF</color>
+    <color name="icPressed">#AAFFFFFF</color>
+
+    <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
+    <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
+    <!--to guard for contrast. Q should have a transparent nav bar as Q will automatically -->
+    <!--handles contrast by either dynamically coloring the nav bar handle (gesture nav) -->
+    <!--or automatically applying a translucent background (3-button mode).-->
+    <color name="nav_bar">@color/reply_black_900_alpha_020</color>
+
+
 </resources>

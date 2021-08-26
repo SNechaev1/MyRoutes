@@ -31,7 +31,8 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding = true
+//        viewBinding true
     }
 }
 
@@ -69,6 +70,13 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.38.1'
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
 
+    //gsm
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
+//    implementation 'com.google.maps.android:android-maps-utils:2.2.5'
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'

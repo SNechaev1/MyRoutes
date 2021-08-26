@@ -1,4 +1,28 @@
 <resources>
     <string name="app_name">My Routes</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- navigation -->
+    <string name="title_map">Map</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_add">Add</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_settings">Settings</string>
+
+    <!-->Dialog<-->
+    <string name="dialog_title_error">Attention</string>
+    <string name="continue_btn">Continue</string>
+    <string name="settings_push">Notifications</string>
+    <string name="enter_date">Selected date</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="yes">yes</string>
+    <string name="no">no\t</string>
+    <string name="ok">OK</string>
+
+    <string name="dialog_title">Attention</string>
+    <string name="main_text_notGPS">To use the app, you need to enable location detection.</string>
+    <string name="positive_btn_notGPS">Go to settings</string>
+    <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
+    <string name="positive_btn_GPS_permission">Permit</string>
 </resources>
