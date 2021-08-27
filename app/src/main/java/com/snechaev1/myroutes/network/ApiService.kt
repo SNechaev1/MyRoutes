@@ -22,4 +22,7 @@ interface ApiService {
     @GET("routes")
     suspend fun getRoutes(@Query("page") page: Int, @Query("limit") limit: Int): ApiResponse<List<Route>>
 
+    @GET("setNotification")
+    suspend fun setNotification(@Query("enable") enable: Boolean): ApiResponse<String>
+
 }

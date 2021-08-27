@@ -15,6 +15,8 @@ class ApiDataSource @Inject constructor(
 
     suspend fun getRoute(id: String) = getResult { apiService.getRoute(id) }
     suspend fun getRoutes() = getResult { apiService.getRoutes() }
+    suspend fun setNotification(enable: Boolean) = getResult { apiService.setNotification(enable) }
+
 
 //    private fun setPushToken() {
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
