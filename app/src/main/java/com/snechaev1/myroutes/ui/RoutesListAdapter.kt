@@ -10,7 +10,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.snechaev1.myroutes.R
-import com.snechaev1.myroutes.data.Route
+import com.snechaev1.myroutes.data.model.Route
 import com.snechaev1.myroutes.databinding.RouteItemBinding
 
 class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>(RouteDiffCallback()) {

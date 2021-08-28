@@ -4,32 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.maps.CameraUpdateFactory
+import androidx.lifecycle.asLiveData
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.snechaev1.myroutes.R
 import com.snechaev1.myroutes.databinding.MapFrBinding
+import com.snechaev1.myroutes.utils.RouteDrawHelper
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import timber.log.Timber
 
 @AndroidEntryPoint
 class MapsFragment : AbstractMapFragment() {
 
     private lateinit var binding: MapFrBinding
-    private val mainViewModel: MainViewModel by activityViewModels()
 
     val callback = OnMapReadyCallback { googleMap ->
         Timber.d("map: $googleMap ")
-        with(googleMap.uiSettings) {
-            isMapToolbarEnabled = false
-            isCompassEnabled = false
-            isMyLocationButtonEnabled = true
-        }
         map = googleMap
+//        showBottomSheetDialogFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -43,6 +35,30 @@ class MapsFragment : AbstractMapFragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+        binding.btnStartRoute.setOnClickListener {
+            viewModel.routeActive.value = viewModel.routeActive.value.not()
+        }
+
+        viewModel.routeActive.asLiveData().observe(viewLifecycleOwner) { routeActive ->
+            with(binding.btnStartRoute) {
+                if (routeActive) {
+                    text =  getString(R.string.finish_route)
+                    viewModel.userLocationLatLng.value?.let {
+                        viewModel.path.value.add(it)
+                    }
+                    map?.let { RouteDrawHelper.drawRoute(context, it, viewModel.path.value) }
+                } else {
+                    text =  getString(R.string.start_route)
+                    if (viewModel.path.value.isNotEmpty()) {
+
+                    }
+                    viewModel.path.value = mutableListOf()
+                    RouteDrawHelper.removeRoute()
+                }
+            }
+
+        }
     }
 
 //    fun location() {
@@ -51,7 +67,7 @@ class MapsFragment : AbstractMapFragment() {
 //        }
 //    }
 
-    private fun showBottomSheetDialogFragment(vehicleQr: String) {
+    private fun showBottomSheetDialogFragment() {
         val bottomSheetFragment = MapBottomSheet()
         bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
     }

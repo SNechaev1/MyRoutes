@@ -3,7 +3,7 @@ package com.snechaev1.myroutes.db
 import android.database.Cursor
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.snechaev1.myroutes.data.Route
+import com.snechaev1.myroutes.data.model.Route
 
 @Dao
 interface RouteDao {

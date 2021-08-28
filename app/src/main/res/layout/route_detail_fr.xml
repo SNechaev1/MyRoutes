@@ -7,7 +7,7 @@
     <data>
         <variable
             name="route"
-            type="com.snechaev1.myroutes.data.Route"/>
+            type="com.snechaev1.myroutes.data.model.Route"/>
         <import
             type="android.view.View" />
     </data>

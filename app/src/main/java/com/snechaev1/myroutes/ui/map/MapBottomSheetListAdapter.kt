@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.snechaev1.myroutes.data.Route
+import com.snechaev1.myroutes.data.model.Route
 import com.snechaev1.myroutes.databinding.RouteItemBinding
 
 class MapBottomSheetListAdapter(

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.snechaev1.myroutes.databinding.MapBottomSheetBinding
@@ -14,9 +13,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MapBottomSheet() : BottomSheetDialogFragment() {
 
-    private var fragmentView: View? = null
     private lateinit var binding: MapBottomSheetBinding
-    private val mapViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = MapBottomSheetBinding.inflate(inflater, container, false)
@@ -32,7 +29,7 @@ class MapBottomSheet() : BottomSheetDialogFragment() {
             adapter = listAdapter
         }
 
-        binding.btnRoutes.setOnClickListener {
+        binding.btnStartRoute.setOnClickListener {
             Timber.d("btnRoutes clicked")
         }
     }

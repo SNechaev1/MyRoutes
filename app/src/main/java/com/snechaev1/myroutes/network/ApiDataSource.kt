@@ -1,8 +1,9 @@
 package com.snechaev1.myroutes.network
 
 import android.content.Context
-import com.snechaev1.myroutes.data.ApiResource
-import com.snechaev1.myroutes.data.ApiResponse
+import com.snechaev1.myroutes.data.model.ApiResource
+import com.snechaev1.myroutes.data.model.ApiResponse
+import com.snechaev1.myroutes.data.model.RouteList
 import dagger.hilt.android.qualifiers.ApplicationContext
 import timber.log.Timber
 import javax.inject.Inject
@@ -15,6 +16,8 @@ class ApiDataSource @Inject constructor(
 
     suspend fun getRoute(id: String) = getResult { apiService.getRoute(id) }
     suspend fun getRoutes() = getResult { apiService.getRoutes() }
+    suspend fun postRoutes(routeList: RouteList) = getResult { apiService.postRoutes(routeList) }
+
     suspend fun setNotification(enable: Boolean) = getResult { apiService.setNotification(enable) }
 
 

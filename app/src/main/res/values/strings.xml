@@ -54,4 +54,8 @@
     <string name="need_update">You need to update the app.</string>
     <string name="add_choose_where">Upload from your library or take a new photo</string>
 
+    <string name="start_route">start route</string>
+    <string name="finish_route">finish route</string>
+
+
 </resources>

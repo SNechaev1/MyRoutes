@@ -1,6 +1,8 @@
 package com.snechaev1.myroutes.db
 
 import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.snechaev1.myroutes.data.model.LatLngList
 import java.util.*
 
 class Converters {
@@ -28,7 +30,7 @@ class Converters {
 //    }
 
     @TypeConverter
-    fun fromStringList(value: MutableList<String>): String {
+    fun fromStringList(value: List<String>): String {
         return value.toString()
     }
 
@@ -37,7 +39,36 @@ class Converters {
         return if (value.isNotEmpty()) {
             value.split(",")
         } else {
-            mutableListOf()
+            emptyList()
+        }
+    }
+
+//    @TypeConverter
+//    fun fromLatLngList(value: List<LatLng>): String {
+//        return value.toString()
+//    }
+//
+//    @TypeConverter
+//    fun toLatLngList(value: String): List<LatLng> {
+//        return if (value.isNotEmpty()) {
+//            value.split(",")
+//        } else {
+//            emptyList()
+//        }
+//    }
+
+
+    @TypeConverter
+    fun fromLatLngList(value: LatLngList?): String? {
+        return Gson().toJson(value)
+    }
+
+    @TypeConverter
+    fun toLatLngList(value: String?): LatLngList? {
+        return try {
+            Gson().fromJson(value, LatLngList::class.java)
+        } catch (e: Exception) {
+            null
         }
     }
 

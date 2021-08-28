@@ -5,8 +5,8 @@ import android.widget.Toast
 import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import com.snechaev1.myroutes.R
-import com.snechaev1.myroutes.data.ApiException
-import com.snechaev1.myroutes.data.AppError
+import com.snechaev1.myroutes.data.model.ApiException
+import com.snechaev1.myroutes.data.model.AppError
 import retrofit2.HttpException
 import timber.log.Timber
 import java.net.ConnectException

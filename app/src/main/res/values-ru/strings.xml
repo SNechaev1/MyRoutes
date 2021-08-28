@@ -54,4 +54,7 @@
     <string name="need_update">Необходимо обновить приложение.</string>
     <string name="add_choose_where">Загрузите из вашей медиатеки или сделайте новое фото</string>
 
+    <string name="start_route">Стартовать маршрут</string>
+    <string name="finish_route">Завершить маршрут</string>
+
 </resources>

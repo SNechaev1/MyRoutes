@@ -1,4 +1,4 @@
-package com.snechaev1.myroutes.data
+package com.snechaev1.myroutes.data.model
 
 class ApiException(val appError: AppError, val apiMessage: String? = null) : RuntimeException(appError.message)
 data class AppError(val message: String = "", val code: Int? = null)
