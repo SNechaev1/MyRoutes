@@ -11,11 +11,14 @@ interface RouteDao {
     @Query("SELECT * FROM routes ORDER BY created DESC")
     fun getAllRoutes(): PagingSource<Int, Route>
 
+    @Query("SELECT * FROM routes ORDER BY created DESC")
+    suspend fun getAllRoutes2(): List<Route>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllRoutes(routes: List<Route>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRoutes(vararg route: Route)
+    suspend fun insertRoute(route: Route)
 
     @Delete
     suspend fun deleteRoute(route: Route)

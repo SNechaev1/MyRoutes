@@ -26,6 +26,7 @@
     <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
     <string name="positive_btn_GPS_permission">Permit</string>
 
+    <string name="route">Маршрут</string>
     <string name="routes">Маршруты</string>
     <string name="statistics">Статистика</string>
 
@@ -56,5 +57,9 @@
 
     <string name="start_route">Стартовать маршрут</string>
     <string name="finish_route">Завершить маршрут</string>
+    <string name="total_routes">Всего маршрутов</string>
+    <string name="average_duration">Средняя продолжительность маршрута</string>
+    <string name="average_distance">Средняя длина маршрута</string>
+    <string name="delete_route">Удалить маршрут</string>
 
 </resources>

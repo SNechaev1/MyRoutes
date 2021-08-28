@@ -12,28 +12,28 @@
         android:layout_marginTop="@dimen/text_margin">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/item_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:maxLines="1"
             android:ellipsize="end"
             android:textAppearance="?attr/textAppearanceHeadline5"
-            app:layout_constraintEnd_toStartOf="@id/item_state"
+            app:layout_constraintEnd_toStartOf="@id/item_distance"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="My Route" />
+            tools:text="Route" />
 
         <TextView
-            android:id="@+id/item_state"
+            android:id="@+id/item_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/brand_prim"
             android:textAppearance="?attr/textAppearanceSubtitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/title"
-            tools:text="active" />
+            app:layout_constraintBottom_toBottomOf="@id/item_description"
+            tools:text="5 km" />
 
         <TextView
             android:id="@+id/item_date"
@@ -42,20 +42,21 @@
             android:ellipsize="end"
             android:layout_marginTop="6dp"
             android:textAppearance="?attr/textAppearanceSubtitle2"
-            app:layout_constraintEnd_toStartOf="@id/item_id"
+            app:layout_constraintEnd_toStartOf="@id/item_duration"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/item_description"
             tools:text="16-09-2020 12:12" />
 
         <TextView
-            android:id="@+id/item_id"
+            android:id="@+id/item_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/brand_prim"
             android:layout_marginTop="6dp"
             android:textAppearance="?attr/textAppearanceSubtitle2"
             app:layout_constraintBottom_toBottomOf="@id/item_date"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="1000000001" />
+            tools:text="00:10:10 " />
 
         <View
             android:id="@+id/divider"

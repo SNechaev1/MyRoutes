@@ -16,3 +16,4 @@ local.properties
 keystore.properties
 *.jks
 /app/src/main/res/values/secret.xml
+/app/google-services.json

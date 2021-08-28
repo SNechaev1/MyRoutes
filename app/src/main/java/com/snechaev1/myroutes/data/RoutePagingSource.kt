@@ -17,7 +17,6 @@ class RoutePagingSource(private val service: ApiService) : PagingSource<Int, Rou
         return try {
             // Start refresh at page 1 if undefined.
             val response = service.getRoutes(pageNumber, params.loadSize)
-//            val response = service.repairRequests(pageNumber, params.loadSize, GlobalValues.BICYCLE_TYPE)
             val routes = response.data?.routeRequests ?: emptyList()
             Timber.d("load: $routes")
 

@@ -1,6 +1,7 @@
 package com.snechaev1.myroutes.data
 
 import android.content.Context
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -28,21 +29,21 @@ class DataRepository @Inject constructor(
 ) {
 
     fun getRouteList(): Flow<PagingData<Route>> {
-//        val pagingSourceFactory = { routeDao.getAllRoutes() }
-//        @OptIn(ExperimentalPagingApi::class)
-//        return Pager(
-//            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
-//            remoteMediator = RepReqBikesRemoteMediator(apiService, db),
-//            pagingSourceFactory = pagingSourceFactory
-//        ).flow
+        val pagingSourceFactory = { routeDao.getAllRoutes() }
+        @OptIn(ExperimentalPagingApi::class)
         return Pager(
-//                initialKey = 1,
-            config = PagingConfig(
-                pageSize = NETWORK_PAGE_SIZE,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { RoutePagingSource(apiService) }
+            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
+            remoteMediator = RouteRemoteMediator(apiService, db),
+            pagingSourceFactory = pagingSourceFactory
         ).flow
+//        return Pager(
+////                initialKey = 1,
+//            config = PagingConfig(
+//                pageSize = NETWORK_PAGE_SIZE,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { RoutePagingSource(apiService) }
+//        ).flow
     }
 
     suspend fun getRoutes(): ApiResource<List<Route>> {
@@ -58,6 +59,20 @@ class DataRepository @Inject constructor(
             Timber.d("routeList in thread ${Thread.currentThread().name}")
             apiDataSource.postRoutes(routeList)
         }
+    }
+
+    suspend fun saveRoute(route: Route) {
+        routeDao.insertRoute(route)
+    }
+
+    fun deleteRoute(route: Route) {
+        appScope.launch {
+            routeDao.deleteRoute(route)
+        }
+    }
+
+    suspend fun routesDb(): List<Route> {
+        return routeDao.getAllRoutes2()
     }
 
 }

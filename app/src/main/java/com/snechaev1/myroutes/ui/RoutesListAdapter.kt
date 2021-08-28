@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.snechaev1.myroutes.R
 import com.snechaev1.myroutes.data.model.Route
 import com.snechaev1.myroutes.databinding.RouteItemBinding
+import kotlin.time.ExperimentalTime
 
 class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>(RouteDiffCallback()) {
 
@@ -19,23 +20,28 @@ class RoutesListAdapter : PagingDataAdapter<Route, RoutesListAdapter.ViewHolder>
         return ViewHolder(RouteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
+    @ExperimentalTime
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
-            holder.titleView.text = item.description
-//            holder.dateView.text = item.createdDate()
-//            holder.stateView.text = item.statusString(holder.itemView.context)
-            holder.itemView.setOnClickListener {
-                val bundle = bundleOf("route" to item)
-                it.findNavController().navigate(R.id.action_global_detail_fragment, bundle)
+            with(holder) {
+                descriptionView.text = item.description
+                distanceView.text = item.distanceKm()
+                dateView.text = item.createdDate()
+                durationView.text = item.duration()
+                itemView.setOnClickListener {
+                    val bundle = bundleOf("route" to item)
+                    it.findNavController().navigate(R.id.action_global_detail_fragment, bundle)
+                }
             }
         }
     }
 
     inner class ViewHolder(private val binding: RouteItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val titleView: TextView = binding.title
+        val descriptionView: TextView = binding.itemDescription
+        val distanceView: TextView = binding.itemDistance
         val dateView: TextView = binding.itemDate
-        val stateView: TextView = binding.itemState
+        val durationView: TextView = binding.itemDuration
     }
 
     private class RouteDiffCallback : DiffUtil.ItemCallback<Route>() {

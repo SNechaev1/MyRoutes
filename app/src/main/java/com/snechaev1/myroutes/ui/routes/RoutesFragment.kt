@@ -23,6 +23,9 @@ class RoutesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = RoutesFrBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        lifecycleScope.launch {
+            viewModel.getRoutes()
+        }
         return binding.root
     }
 

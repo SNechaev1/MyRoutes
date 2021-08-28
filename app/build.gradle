@@ -42,6 +42,7 @@ android {
 
     flavorDimensions 'mode'
     productFlavors {
+        //todo Setup backend
         prod {
             buildConfigField "String", "API_PATH", "\"https://examle.com/api/\""
         }
@@ -56,6 +57,8 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+        freeCompilerArgs += ["-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"]
     }
     buildFeatures {
         dataBinding = true
@@ -118,7 +121,13 @@ dependencies {
     implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     implementation 'com.google.android.gms:play-services-basement:17.6.0'
     implementation 'com.google.android.gms:play-services-base:17.6.0'
-//    implementation 'com.google.maps.android:android-maps-utils:2.2.5'
+    implementation 'com.google.maps.android:android-maps-utils:2.2.5'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.3.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'

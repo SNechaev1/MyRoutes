@@ -29,7 +29,7 @@
         android:label="@string/title_detail" >
         <argument
             android:name="route"
-            app:argType="com.snechaev1.myroutes.data.Route" />
+            app:argType="com.snechaev1.myroutes.data.model.Route" />
     </fragment>
     <action android:id="@+id/action_global_detail_fragment" app:destination="@id/nav_detail"/>
 

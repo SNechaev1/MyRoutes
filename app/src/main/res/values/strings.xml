@@ -26,6 +26,7 @@
     <string name="main_text_GPS_permission">To use the app, you need to permit location detection.</string>
     <string name="positive_btn_GPS_permission">Permit</string>
 
+    <string name="route">Route</string>
     <string name="routes">Routes</string>
     <string name="statistics">Statistics</string>
 
@@ -56,6 +57,10 @@
 
     <string name="start_route">start route</string>
     <string name="finish_route">finish route</string>
+    <string name="total_routes">Total routes</string>
+    <string name="average_duration">The average duration of the route</string>
+    <string name="average_distance">The average duration of the route</string>
+    <string name="delete_route">delete route</string>
 
 
 </resources>

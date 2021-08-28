@@ -68,9 +68,9 @@ class RouteRemoteMediator(
             // wrapped in a withContext(Dispatcher.IO) { ... } block since
             // Retrofit's Coroutine CallAdapter dispatches on a worker
             // thread.
-//            val response = networkService.repairRequests(after = loadKey)
+//            val response = networkService.routes(after = loadKey)
             // Start refresh at page 1 if undefined.
-//            var repairRequests: MutableList<RepairRequest> = mutableListOf()
+//            var routeRequests: MutableList<RouteRequest> = mutableListOf()
             var routeRequests: List<Route>
 
             if (loadKey == null) {

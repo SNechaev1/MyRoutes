@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +20,7 @@ import com.snechaev1.myroutes.ui.map.MapViewModel
 import com.snechaev1.myroutes.utils.RouteDrawHelper
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
 class RouteDetailFragment : Fragment() {
@@ -44,15 +46,30 @@ class RouteDetailFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         arguments?.let {
             val route = it.getSerializable("route") as Route
-            binding.route = route
+            viewModel.route.value = route
         }
         return binding.root
     }
 
+    @ExperimentalTime
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+        viewModel.route.asLiveData().observe(viewLifecycleOwner) { route ->
+            route?.let {
+                with(binding) {
+                    itemDescription.text = route.description
+                    itemDistance.text = route.distanceKm()
+                    itemDate.text = route.createdDate()
+                    itemDuration.text = route.duration()
+                }
+            }
+        }
+        binding.btnDeleteRoute.setOnClickListener {
+            viewModel.route.value?.let { route -> viewModel.deleteRoute(route) }
+            findNavController().popBackStack()
+        }
     }
 
     private fun setMapLocation() {

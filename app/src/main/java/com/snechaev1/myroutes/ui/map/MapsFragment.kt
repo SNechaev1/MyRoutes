@@ -5,18 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.snechaev1.myroutes.R
+import com.snechaev1.myroutes.data.DataRepository
+import com.snechaev1.myroutes.data.model.LatLngList
+import com.snechaev1.myroutes.data.model.Route
 import com.snechaev1.myroutes.databinding.MapFrBinding
 import com.snechaev1.myroutes.utils.RouteDrawHelper
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MapsFragment : AbstractMapFragment() {
 
     private lateinit var binding: MapFrBinding
+    @Inject
+    lateinit var dataRepository: DataRepository
 
     val callback = OnMapReadyCallback { googleMap ->
         Timber.d("map: $googleMap ")
@@ -38,27 +46,45 @@ class MapsFragment : AbstractMapFragment() {
 
         binding.btnStartRoute.setOnClickListener {
             viewModel.routeActive.value = viewModel.routeActive.value.not()
+
+            if (viewModel.routeActive.value) {
+//                binding.btnStartRoute.text =  getString(R.string.finish_route)
+                viewModel.userLocationLatLng.value?.let {
+                    viewModel.path.value.add(it)
+                }
+                viewModel.route.value = Route(created = System.currentTimeMillis())
+                if (map != null && context != null)
+                    RouteDrawHelper.drawRoute(requireContext(), map!!, viewModel.path.value)
+            } else {
+//                binding.btnStartRoute.text =  getString(R.string.start_route)
+                if (viewModel.path.value.isNotEmpty()) {
+                    lifecycleScope.launch {
+                        viewModel.route.value?.let { route ->
+                            dataRepository.saveRoute(route.apply {
+                                description = getString(R.string.route)
+                                finished = System.currentTimeMillis()
+                                path = LatLngList(viewModel.path.value)
+                            })
+                        }
+                    }
+                    viewModel.route.value = null
+                    viewModel.path.value = mutableListOf()
+                }
+                RouteDrawHelper.removeRoute()
+            }
+
         }
 
         viewModel.routeActive.asLiveData().observe(viewLifecycleOwner) { routeActive ->
             with(binding.btnStartRoute) {
-                if (routeActive) {
-                    text =  getString(R.string.finish_route)
-                    viewModel.userLocationLatLng.value?.let {
-                        viewModel.path.value.add(it)
-                    }
-                    map?.let { RouteDrawHelper.drawRoute(context, it, viewModel.path.value) }
+                text = if (routeActive) {
+                    getString(R.string.finish_route)
                 } else {
-                    text =  getString(R.string.start_route)
-                    if (viewModel.path.value.isNotEmpty()) {
-
-                    }
-                    viewModel.path.value = mutableListOf()
-                    RouteDrawHelper.removeRoute()
+                    getString(R.string.start_route)
                 }
             }
-
         }
+
     }
 
 //    fun location() {
