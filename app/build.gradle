@@ -19,8 +19,8 @@ android {
         applicationId "com.snechaev1.myroutes"
         minSdk 23
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "myroutes")
     }
@@ -37,7 +37,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            debuggable true
+//            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             versionNameSuffix " (${defaultConfig.versionCode})"
             signingConfig signingConfigs.release
@@ -59,10 +59,10 @@ android {
     productFlavors {
         //todo Setup backend
         prod {
-            buildConfigField "String", "API_PATH", "\"https://examle.com/api/\""
+            buildConfigField "String", "API_PATH", "\"https://snechaev.men/api/\""
         }
         dev {
-            buildConfigField "String", "API_PATH", "\"https://examle.com/dev/api/\""
+            buildConfigField "String", "API_PATH", "\"https://snechaev.men/dev/api/\""
         }
     }
 

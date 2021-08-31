@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My Routes</string>
-    <string name="title_activity_maps">MapsActivity</string>
 
     <!-- navigation -->
     <string name="title_map">Map</string>
@@ -29,7 +28,12 @@
     <string name="route">Route</string>
     <string name="routes">Routes</string>
     <string name="statistics">Statistics</string>
-
+    <string name="start_route">start route</string>
+    <string name="finish_route">finish route</string>
+    <string name="total_routes">Total routes</string>
+    <string name="average_duration">The average duration of the route</string>
+    <string name="average_distance">The average duration of the route</string>
+    <string name="delete_route">delete route</string>
 
     <!-- app errors -->
     <string name="invalid_params">Input values invalid</string>  //400
@@ -54,13 +58,5 @@
     <string name="auth_problems">An error occurred. You must log in to the app.</string>
     <string name="need_update">You need to update the app.</string>
     <string name="add_choose_where">Upload from your library or take a new photo</string>
-
-    <string name="start_route">start route</string>
-    <string name="finish_route">finish route</string>
-    <string name="total_routes">Total routes</string>
-    <string name="average_duration">The average duration of the route</string>
-    <string name="average_distance">The average duration of the route</string>
-    <string name="delete_route">delete route</string>
-
 
 </resources>

@@ -1,8 +1,6 @@
 package com.snechaev1.myroutes
 
 import android.app.Application
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -36,11 +34,12 @@ class BaseApp : Application() {
         }
     }
 
-    private fun isNetworkConnected(): Boolean {
-        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetwork
-        val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork)
-        return networkCapabilities != null &&
-                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-    }
+//    private fun isNetworkConnected(): Boolean {
+//        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+//        val activeNetwork = connectivityManager.activeNetwork
+//        val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork)
+//        return networkCapabilities != null &&
+//                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+//    }
+
 }
