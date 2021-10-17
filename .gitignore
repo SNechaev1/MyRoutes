@@ -88,4 +88,7 @@ lint/tmp/
 # Android Profiling
 *.hprof
 
+
 /app/src/main/res/values/secret.xml
+/app/google-services.json
+/app/myroutes-keystore.jks
