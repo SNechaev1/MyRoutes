@@ -44,14 +44,14 @@ object AppNotificationManager {
 
         val color = ContextCompat.getColor(context, R.color.brand_prim_bg)
         val notificationBuilder = NotificationCompat.Builder(context, "channel_01")
-                .setColor(color)
-//                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(notificationData.title)
-                .setContentText(notificationData.message)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .setColor(color)
+            .setSmallIcon(R.drawable.ic_notification_important_24)
+            .setContentTitle(notificationData.title)
+            .setContentText(notificationData.message)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
 //                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
+            .setAutoCancel(true)
         return notificationBuilder.build()
     }
 

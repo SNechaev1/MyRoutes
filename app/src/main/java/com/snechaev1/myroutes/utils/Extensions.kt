@@ -51,23 +51,31 @@ fun Double.stripTrailingZeros(): String {
     else BigDecimal(this).setScale(2, RoundingMode.HALF_EVEN).stripTrailingZeros().toPlainString()
 }
 
+//val handlerThread = HandlerThread("MyHandlerThread")
+//handlerThread.start()
+//handlerThread.quit()
+//looper.quit()
+//handlerThread.quit()
 // Implementation of a cold flow backed by a Channel that sends Location updates
 @SuppressLint("MissingPermission")
-fun FusedLocationProviderClient.locationFlow() = callbackFlow<Location> {
+fun FusedLocationProviderClient.locationFlow(isBackground: Boolean = true, looper: Looper = Looper.getMainLooper()) = callbackFlow {
     val callback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult?) {
             result ?: return
-            try { offer(result.lastLocation) } catch(e: Exception) {}
+            try {
+                trySend(result).isSuccess
+            } catch(e: Exception) {}
         }
     }
     val locationRequest = LocationRequest.create().apply {
-        interval = 20000
-        fastestInterval = 10000
+        interval = 20_000
+        if (isBackground) maxWaitTime = 100_000
+        fastestInterval = 10_000
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
-    requestLocationUpdates(locationRequest, callback, Looper.getMainLooper())
-            .addOnFailureListener { e ->
-                close(e) // in case of exception, close the Flow
+    requestLocationUpdates(locationRequest, callback, looper)
+            .addOnFailureListener { exc ->
+                close(exc) // in case of exception, close the Flow
 //                    activity?.let {
 //                        Toast.makeText(it.applicationContext, it.getString(R.string.could_not_define_location), Toast.LENGTH_SHORT).show()
 //                    }

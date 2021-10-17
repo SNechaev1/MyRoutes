@@ -89,10 +89,10 @@ abstract class AbstractMapFragment : Fragment() {
                 context.hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) -> { // The permission is granted
                     checkGPSEnabled()
                     Timber.d("get currentLocation ACCESS_FINE_LOCATION: true ")
-                    locationProvider.locationFlow().collectLatest { location ->
-                        // .doOnDispose { userOverlay?.clear() }
-                        Timber.d("checkGPSPermission location: $location ")
-                        viewModel.userLocationLatLng.value = location.toLatLng()
+                    locationProvider.locationFlow().collectLatest { locationResult ->
+                        Timber.d("checkGPSPermission location: $locationResult ")
+                        Timber.d("checkGPSPermission locations: ${locationResult.locations} ")
+                        viewModel.userLocationLatLng.value = locationResult.lastLocation.toLatLng()
                         if (viewModel.routeActive.value) {
                             viewModel.userLocationLatLng.value?.let { viewModel.path.value.add(it) }
                             map?.let { RouteDrawHelper.drawRoute(context, it, viewModel.path.value) }
@@ -101,11 +101,11 @@ abstract class AbstractMapFragment : Fragment() {
                         }
                         if (!userPositionInitialized) {
                             userPositionInitialized = true
-                            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(location.toLatLng(),
+                            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(locationResult.lastLocation.toLatLng(),
                                 DEFAULT_ZOOM
                             ))
                         }
-                        map?.let { onLocationUpdate(location, it) }
+                        map?.let { onLocationUpdate(locationResult.lastLocation, it) }
                     }
                 }
                 shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) -> {
