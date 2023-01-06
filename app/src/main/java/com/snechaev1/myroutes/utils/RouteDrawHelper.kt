@@ -30,19 +30,22 @@ object RouteDrawHelper {
 
         startMarker?.remove()
         finishMarker?.remove()
-        startMarker = map.addMarker(path.first().let {
-            MarkerOptions()
+        if (path.isNotEmpty()) {
+            startMarker = map.addMarker(path.first().let {
+                MarkerOptions()
                     .icon(iconStart)
                     .position(it)
                     .anchor(0.5f, 0.5f)
-        })
-        finishMarker = map.addMarker(path.last().let {
-            MarkerOptions()
+            })
+            finishMarker = map.addMarker(path.last().let {
+                MarkerOptions()
                     .icon(iconFinish)
                     .position(it)
                     .anchor(0.5f, 0.5f)
-        })
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(path.last(), 12f))
+            })
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(path.last(), 12f))
+        }
+
     }
 
     fun removeRoute() {

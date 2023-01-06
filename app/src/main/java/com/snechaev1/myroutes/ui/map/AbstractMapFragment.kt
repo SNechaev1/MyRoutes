@@ -92,20 +92,21 @@ abstract class AbstractMapFragment : Fragment() {
                     locationProvider.locationFlow().collectLatest { locationResult ->
                         Timber.d("checkGPSPermission location: $locationResult ")
                         Timber.d("checkGPSPermission locations: ${locationResult.locations} ")
-                        viewModel.userLocationLatLng.value = locationResult.lastLocation.toLatLng()
+                        viewModel.userLocationLatLng.value = locationResult.lastLocation?.toLatLng()
                         if (viewModel.routeActive.value) {
                             viewModel.userLocationLatLng.value?.let { viewModel.path.value.add(it) }
                             map?.let { RouteDrawHelper.drawRoute(context, it, viewModel.path.value) }
                             Timber.d("userLocationLatLng: ${viewModel.userLocationLatLng.value} ")
                             Timber.d("path: ${viewModel.path.value} ")
                         }
-                        if (!userPositionInitialized) {
+                        if (!userPositionInitialized && locationResult.lastLocation != null) {
                             userPositionInitialized = true
-                            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(locationResult.lastLocation.toLatLng(),
+                            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                locationResult.lastLocation!!.toLatLng(),
                                 DEFAULT_ZOOM
                             ))
                         }
-                        map?.let { onLocationUpdate(locationResult.lastLocation, it) }
+                        map?.let { locationResult.lastLocation?.let { it1 -> onLocationUpdate(it1, it) } }
                     }
                 }
                 shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) -> {

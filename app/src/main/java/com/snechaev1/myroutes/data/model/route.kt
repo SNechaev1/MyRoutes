@@ -7,8 +7,8 @@ import com.google.maps.android.SphericalUtil
 import com.snechaev1.myroutes.utils.DateUtils
 import com.snechaev1.myroutes.utils.stripTrailingZeros
 import java.io.Serializable
-import java.util.concurrent.TimeUnit
 import kotlin.time.Duration
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
@@ -28,7 +28,7 @@ data class Route(
     fun createdDate(): String = DateUtils.routeDate.format(created).toString()
 
     @ExperimentalTime
-    fun durationMs() : Duration = (finished - created).toDuration(TimeUnit.MILLISECONDS)
+    fun durationMs() : Duration = (finished - created).toDuration(DurationUnit.MILLISECONDS)
     @ExperimentalTime
     fun duration() = "${durationMs().inWholeHours}:${durationMs().inWholeMinutes.rem(60)}:${durationMs().inWholeSeconds.rem(60).rem(60)} "
 

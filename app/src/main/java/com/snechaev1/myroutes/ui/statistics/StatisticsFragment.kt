@@ -12,7 +12,7 @@ import com.snechaev1.myroutes.databinding.StatisticsFrBinding
 import com.snechaev1.myroutes.utils.stripTrailingZeros
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
@@ -40,7 +40,7 @@ class StatisticsFragment : Fragment() {
             with(binding) {
                 totalRoutesSize.text = routes.size.toString()
                 if (routes.isNotEmpty()) {
-                    fun durationMs() = routes.map { (it.finished - it.created) }.sum().div(routes.size).toDuration(TimeUnit.MILLISECONDS)
+                    fun durationMs() = routes.map { (it.finished - it.created) }.sum().div(routes.size).toDuration(DurationUnit.MILLISECONDS)
                     fun duration() = "${durationMs().inWholeHours}:${durationMs().inWholeMinutes.rem(60)}:${durationMs().inWholeSeconds.rem(60).rem(60)} "
                     averageDurationValue.text = duration()
 

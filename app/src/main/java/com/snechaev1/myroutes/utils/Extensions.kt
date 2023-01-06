@@ -60,7 +60,7 @@ fun Double.stripTrailingZeros(): String {
 @SuppressLint("MissingPermission")
 fun FusedLocationProviderClient.locationFlow(isBackground: Boolean = true, looper: Looper = Looper.getMainLooper()) = callbackFlow {
     val callback = object : LocationCallback() {
-        override fun onLocationResult(result: LocationResult?) {
+        override fun onLocationResult(result: LocationResult) {
             result ?: return
             try {
                 trySend(result).isSuccess

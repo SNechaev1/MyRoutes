@@ -9,9 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import timber.log.Timber
 
-
-
-
 @HiltAndroidApp
 class BaseApp : Application() {
 
