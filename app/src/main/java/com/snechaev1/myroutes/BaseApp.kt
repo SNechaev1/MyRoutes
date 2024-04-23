@@ -1,7 +1,7 @@
 package com.snechaev1.myroutes
 
 import android.app.Application
-import com.google.firebase.messaging.FirebaseMessaging
+//import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -37,13 +37,13 @@ class BaseApp : Application() {
             Timber.plant(Timber.DebugTree())
         }
 //        FirebaseApp.initializeApp(this)
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Timber.d("fcm Push token: ${task.result}")
-            } else {
-                Timber.d("Fetching FCM registration token failed: ${task.exception}")
-            }
-        }
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                Timber.d("fcm Push token: ${task.result}")
+//            } else {
+//                Timber.d("Fetching FCM registration token failed: ${task.exception}")
+//            }
+//        }
     }
 
 //    private fun isNetworkConnected(): Boolean {
